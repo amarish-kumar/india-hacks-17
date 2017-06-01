@@ -1,5 +1,5 @@
 from numpy import genfromtxt, concatenate
-from sklearn import svm
+from sklearn import svm, ensemble, neighbors
 import csv
 
 
@@ -41,7 +41,10 @@ features_test = [list(x)[1:] for x in test_d]
 ids = [list(x)[0] for x in test_d]
 
 # Train classifier and predict probabilities
-classifier = svm.SVC(probability=True, kernel='linear')
+#classifier = svm.SVC(probability=True, kernel='poly')
+classifier = ensemble.RandomForestClassifier(n_estimators=200)
+#classifier = ensemble.AdaBoostClassifier(n_estimators=50, learning_rate=0.5)
+#classifier = neighbors.KNeighborsClassifier(algorithm="auto", weights="distance", n_neighbors=15)
 
 print("Training...")
 classifier.fit(features_train, labels_train)
