@@ -41,13 +41,13 @@ features_test = [list(x)[1:] for x in test_d]
 ids = [list(x)[0] for x in test_d]
 
 # Train classifier and predict probabilities
-#classifier = svm.SVC(probability=True, kernel='poly', C=100, cache_size=100)
-classifier = ensemble.RandomForestClassifier(n_estimators=500,max_features=3,min_samples_split=5,oob_score=True)
+classifier = svm.SVC(probability=True, kernel='linear', cache_size=10, verbose=True)
+#classifier = ensemble.RandomForestClassifier(n_estimators=500,max_features=3,min_samples_split=5,oob_score=True)
 #classifier = ensemble.AdaBoostClassifier(n_estimators=50, learning_rate=0.5)
 #classifier = neighbors.KNeighborsClassifier(algorithm="auto", weights="distance", n_neighbors=15)
 
 print("Training...")
-classifier.fit(features_train, labels_train)
+classifier.fit(features_train[:1000], labels_train[:1000])
 print("Finished training.")
 
 print("Predicting...")
