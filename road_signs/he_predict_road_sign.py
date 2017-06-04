@@ -47,7 +47,7 @@ classifier = svm.SVC(probability=True, kernel='linear', cache_size=10, verbose=T
 #classifier = neighbors.KNeighborsClassifier(algorithm="auto", weights="distance", n_neighbors=15)
 
 print("Training...")
-classifier.fit(features_train[:1000], labels_train[:1000])
+classifier.fit(features_train[:10000], labels_train[:10000])
 print("Finished training.")
 
 print("Predicting...")
